@@ -2,12 +2,13 @@ import Project from "./Project"
 import { tasks } from "./Storage"
 
 class Task {
-    constructor(title, description, dueDate, priority, project) {
+    constructor(title, description, dueDate, priority, project, checked) {
         this.title = title
         this.description = description
         this.dueDate = dueDate
         this.priority = priority
         this.project = project
+        this.checked = checked
     }
 }
 
@@ -75,11 +76,12 @@ class MakeNewTask {
 
         addTaskbtn.addEventListener('click', ()=>{
             if (taskTitle.value.trim() != '' && taskDescription.value.trim() != '' && taskDate.value != '' && selectedPrio != ''){
-                const task = new Task(taskTitle.value, taskDescription.value, taskDate.value, selectedPrio, project)
+                const task = new Task(taskTitle.value, taskDescription.value, taskDate.value, selectedPrio, project, false)
                 tasks.push(task)
                 console.log(tasks)
                 Project.viewProjectPage(project)
             } else {
+                console.log(taskTitle.value.trim(), taskDescription.value.trim(), taskDate.value, selectedPrio)
                 alert('Please fill all information')
             }
         })
@@ -99,9 +101,21 @@ class LoadTask {
                 const checkBox = document.createElement('div')
                 checkBox.className = 'card-check-box'
                 checkBox.addEventListener('click', ()=>{
-                    checkBox.classList.toggle('checked')
-                    taskCard.classList.toggle('checked')
+                    if (task.checked == false) {
+                        task.checked = true 
+                        checkBox.classList.toggle('checked')
+                        taskCard.classList.toggle('checked')
+                    } else {
+                        task.checked = false
+                        checkBox.classList.toggle('checked')
+                        taskCard.classList.toggle('checked')
+                    }
                 })
+
+                if (task.checked == true) {
+                    checkBox.classList.add('checked')
+                    taskCard.classList.add('checked')
+                }
 
                 const title = document.createElement('div')
                 title.className = 'card-title'
@@ -126,7 +140,9 @@ class LoadTask {
                 deleteCard.className = 'card-delete'
                 deleteCard.textContent = 'X'
                 deleteCard.addEventListener('click', ()=> {
-
+                    const index = tasks.indexOf(task)
+                    tasks.splice(index, 1)
+                    Project.viewProjectPage(project)
                 })
 
                 taskCard.appendChild(checkBox)
