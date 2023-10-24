@@ -1,3 +1,4 @@
 const projects = []
+const tasks = []
 
-export {projects}
+export {projects, tasks}

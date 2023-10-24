@@ -1,6 +1,6 @@
 import UserInterface from "./UI";
 import { projects } from "./Storage";
-import { MakeNewTask } from "./Task";
+import { MakeNewTask, LoadTask } from "./Task";
 
 class Project {
     static addProjectUi() {
@@ -95,6 +95,8 @@ class Project {
 
         content.appendChild(addTaskBtn)
         content.appendChild(taskList)
+
+        LoadTask.loadTaskForProject(project, taskList)
     }
 
 }
