@@ -19,11 +19,11 @@ class MakeNewTask {
         content.innerHTML = `
         <div id="add-tasks-inputs-container" style="display: flex;">
             <label for="task-title">Title: </label>
-            <input type="text" id="task-title">
+            <input type="text" id="task-title" maxlength="40">
             <label for="task-description">Description: </label>
-            <textarea id="task-description"></textarea>
+            <textarea id="task-description" maxlength="200"></textarea>
             <label for="task-date">Date: </label>
-            <input type="date" id="task-date">
+            <input type="date" id="task-date" max="9999-12-31">
             <div id="priority-title">Priority: </div>
             <div id="priority-button-container">
                 <button id="low-priority-btn">Low</button>
@@ -186,11 +186,11 @@ class EditTask {
         content.innerHTML = `
         <div id="add-tasks-inputs-container" style="display: flex;">
             <label for="task-title">Title: </label>
-            <input type="text" id="task-title" value=${task.title}>
+            <input type="text" id="task-title" value=${task.title} maxlength="40">
             <label for="task-description">Description: </label>
-            <textarea id="task-description">${task.description}</textarea>
+            <textarea id="task-description" maxlength="200">${task.description}</textarea>
             <label for="task-date">Date: </label>
-            <input type="date" id="task-date" value=${task.dueDate}>
+            <input type="date" id="task-date" value=${task.dueDate} max="9999-12-31">
             <div id="priority-title">Priority: </div>
             <div id="priority-button-container">
                 <button id="low-priority-btn">Low</button>
