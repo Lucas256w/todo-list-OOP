@@ -6,3 +6,13 @@ class Task {
         this.priority = priority
     }
 }
+
+class MakeNewTask {
+    static generateForm(project) {
+        const content = document.querySelector('#content')
+
+    }
+}
+
+export default Task
+export {MakeNewTask}

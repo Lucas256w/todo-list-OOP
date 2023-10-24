@@ -1,1 +1,3 @@
-projects = []
+const projects = []
+
+export {projects}
