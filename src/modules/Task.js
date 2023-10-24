@@ -1,5 +1,6 @@
 import Project from "./Project"
 import { tasks } from "./Storage"
+import AllTask from "./AllTask"
 
 class Task {
     constructor(title, description, dueDate, priority, project, checked) {
@@ -180,7 +181,20 @@ class LoadTask {
     static loadTaskForProject(project, taskList) {
         tasks.forEach((task) =>  {
             if (task.project == project){
-                const taskCard = document.createElement('div')
+                LoadTask.loadTaskGeneral(task, taskList, false)
+
+            }
+        })
+    }
+
+    static loadAllTasks(taskList) {
+        tasks.forEach((task) =>  {
+                LoadTask.loadTaskGeneral(task, taskList, true)
+        })
+    }
+
+    static loadTaskGeneral(task, taskList, today) {
+        const taskCard = document.createElement('div')
                 taskCard.className = 'task-card'
                 
                 const checkBox = document.createElement('div')
@@ -210,7 +224,7 @@ class LoadTask {
                 details.className = 'card-details-button'
                 details.textContent = 'details'
                 details.addEventListener('click', ()=> {
-                    task.editTask(project)
+                    task.editTask(task.project)
                 })
 
                 const date = document.createElement('div')
@@ -225,9 +239,14 @@ class LoadTask {
                 deleteCard.className = 'card-delete'
                 deleteCard.textContent = 'X'
                 deleteCard.addEventListener('click', ()=> {
+                    let currentProject = task.project
                     const index = tasks.indexOf(task)
                     tasks.splice(index, 1)
-                    Project.viewProjectPage(project)
+                    if (today) {
+                        AllTask.loadAllTask()
+                    } else {
+                        Project.viewProjectPage(currentProject)
+                    }
                 })
 
                 taskCard.appendChild(checkBox)
@@ -240,10 +259,6 @@ class LoadTask {
 
 
                 taskList.appendChild(taskCard)
-            }
-
-
-        })
     }
 }
 
