@@ -10,6 +10,91 @@ class Task {
         this.project = project
         this.checked = checked
     }
+
+    editTask(project) {
+        const content = document.querySelector('#content')
+        content.innerHTML = `
+        <div id="add-tasks-inputs-container" style="display: flex;">
+            <label for="task-title">Title: </label>
+            <input type="text" id="task-title" value=${this.title}>
+            <label for="task-description">Description: </label>
+            <textarea id="task-description">${this.description}</textarea>
+            <label for="task-date">Date: </label>
+            <input type="date" id="task-date" value=${this.dueDate}>
+            <div id="priority-title">Priority: </div>
+            <div id="priority-button-container">
+                <button id="low-priority-btn">Low</button>
+                <button id="med-priority-btn">Med</button>
+                <button id="high-priority-btn">High</button>
+             </div>
+            <div id="add-cancel-task-container">
+            <button id="add-task-confirm-button">Add</button>
+            <button id="cancel-task-confirm-button">Cancel</button>
+            </div>
+        </div>
+        `;
+
+        const taskTitle = document.querySelector('#task-title');
+        const taskDescription = document.querySelector('#task-description');
+        const taskDate = document.querySelector('#task-date')
+        const lowPrioBtn = document.querySelector('#low-priority-btn');
+        const medPrioBtn = document.querySelector('#med-priority-btn');
+        const highPrioBtn = document.querySelector('#high-priority-btn');
+
+        const addTaskbtn = document.querySelector('#add-task-confirm-button');
+        const cancelBtn = document.querySelector('#cancel-task-confirm-button');
+        
+        let selectedPrio = this.priority
+        if(selectedPrio == 'Low') {
+            lowPrioBtn.className = 'selectedPrio'
+        } else if (selectedPrio == 'Med') {
+            medPrioBtn.className = 'selectedPrio'
+        } else if (selectedPrio == 'High') {
+            highPrioBtn.className = 'selectedPrio'
+        }
+
+        lowPrioBtn.addEventListener('click', ()=>{
+            lowPrioBtn.className = 'selectedPrio'
+            medPrioBtn.className = ''
+            highPrioBtn.className = ''
+
+            selectedPrio = 'Low'
+        })
+        medPrioBtn.addEventListener('click', ()=>{
+            lowPrioBtn.className = ''
+            medPrioBtn.className = 'selectedPrio'
+            highPrioBtn.className = ''
+
+            selectedPrio = 'Med'
+        })
+        highPrioBtn.addEventListener('click', ()=>{
+            lowPrioBtn.className = ''
+            medPrioBtn.className = ''
+            highPrioBtn.className = 'selectedPrio'
+
+            selectedPrio = 'High'
+        })
+
+        cancelBtn.addEventListener('click', ()=>{
+            Project.viewProjectPage(project)
+        })
+
+        addTaskbtn.addEventListener('click', ()=>{
+            if (taskTitle.value.trim() != '' && taskDescription.value.trim() != '' && taskDate.value != '' && selectedPrio != ''){
+                this.title = taskTitle.value;
+                this.description = taskDescription.value;
+                this.dueDate = taskDate.value;
+                this.priority = selectedPrio;
+                console.log(tasks)
+                Project.viewProjectPage(project)
+            } else {
+                console.log(taskTitle.value.trim(), taskDescription.value.trim(), taskDate.value, selectedPrio)
+                alert('Please fill all information')
+            }
+        })
+
+
+    }
 }
 
 class MakeNewTask {
@@ -125,7 +210,7 @@ class LoadTask {
                 details.className = 'card-details-button'
                 details.textContent = 'details'
                 details.addEventListener('click', ()=> {
-
+                    task.editTask(project)
                 })
 
                 const date = document.createElement('div')
