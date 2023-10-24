@@ -303,7 +303,7 @@ label {
 
 /* TODO CARD */
 
-.to-do-card {
+.task-card {
     display: flex;
     background-color: var(--shade-white);
     gap: 10px;
@@ -316,7 +316,7 @@ label {
 
 }
 
-.to-do-card.checked::before{
+.task-card.checked::before{
     content: "";
     position: absolute;
     width: calc(100% + 20px);
