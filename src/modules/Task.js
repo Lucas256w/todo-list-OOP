@@ -120,10 +120,12 @@ class LoadTask {
                         task.checked = true 
                         checkBox.classList.toggle('checked')
                         taskCard.classList.toggle('checked')
+                        localStorage.setItem('tasks', JSON.stringify(tasks));
                     } else {
                         task.checked = false
                         checkBox.classList.toggle('checked')
                         taskCard.classList.toggle('checked')
+                        localStorage.setItem('tasks', JSON.stringify(tasks));
                     }
                 })
 
