@@ -1,0 +1,228 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+
+/* GENERAL SETTINGS */
+
+:root {
+    --black: #4E4E4E;
+    --white: #FFFFFF;
+    --shade-white: #FAFAFA;
+    --red: #CC5546;
+    --container-width: 1200px;
+    --border-radius: 6px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+}
+
+body {
+    min-height: 100vh;   
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+header {
+    background-color: var(--red);
+    color: white;
+    padding: 25px;
+    font-size: 4rem;
+}
+
+/* MAIN */
+main{
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100%;
+}
+
+#menu{
+    padding: var(--spacing-lg);
+    background-color: var(--shade-white);
+    height: 100%;
+}
+
+#default-tabs-container {
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+
+.default-tabs{
+    text-align: start;
+    height: 50px;
+    width: 100%;
+    font-size: 1.25rem;
+    color: var(--black);
+    font-family: inherit;
+    border: none;
+    background-color: var(--shade-white);
+    border-radius: var(--border-radius);
+}
+
+.project-container {
+    display: flex;
+    align-items: center;
+}
+
+.default-tabs:hover,
+.project-container:hover {
+    filter: brightness(90%);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+h1 {
+    margin-bottom: 5px;
+    padding: 1px 6px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--black);
+    border-bottom: 3px solid var(--black);
+}
+
+#add-project-input-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#add-project-input-container {
+    display: none;
+}
+
+#add-project-input {
+    outline: none;
+    font-size: 1.25rem;
+    border-radius: 4px;
+}
+
+#input-button-container {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.add-cancel-buttons {
+    border-radius: 6px;
+    color: var(--white);
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 80px;
+}
+
+#add-button {
+    background-color: #BE0303;
+}
+
+#cancel-button {
+    background-color: #2ABD67;
+}
+
+.add-cancel-buttons:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}
+
+
+
+/* TODO CARD */
+
+.to-do-card {
+    display: flex;
+    background-color: var(--shade-white);
+    gap: 10px;
+    height: 40px;
+    align-items: center;
+    padding: 0 10px;
+    border-left: 5px solid var(--red);
+    margin-bottom: 16px;
+    position: relative;
+
+}
+
+.to-do-card.checked::before{
+    content: "";
+    position: absolute;
+    width: calc(100% + 20px);
+    height: 2px;
+    background-color: var(--black);
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+.card-check-box {
+    border: 3px solid var(--red);
+    height: 20px;
+    width: 20px;
+    border-radius: 6px;
+}
+
+.card-check-box.checked {
+    background-color: var(--red);
+}
+
+.card-check-box:hover {
+    cursor: pointer;
+}
+
+.card-title {
+    flex: 1;
+}
+
+.card-details-button {
+    border: 1px solid var(--red);
+    color: var(--red);
+    background-color: var(--white);
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.card-details-button:hover {
+    background-color: var(--red);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.card-delete:hover {
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--red);
+    color: var(--white);
+}

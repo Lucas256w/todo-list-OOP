@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <header>Todo List</header>
+    <main>
+        <div id="menu">
+            <div id="default-tabs-container">
+                <h1>Home</h1>
+                <button class="default-tabs" id="all-tasks-tab">All tasks</button>
+                <button class="default-tabs" id="today-tab">Today</button>
+                <button class="default-tabs" id="this-week-tab">This Week</button>
+            </div>
+            <div id="project-tab-section">
+                <h1>Projects</h1>
+                <div id="project-tab-container">
+                    <button class="default-tabs" id="add-projects-button">+ Add Project</button>
+                    <div id="add-project-input-container">
+                        <input id="add-project-input" type="text">
+                        <div id="input-button-container">
+                            <button class="add-cancel-buttons" id="add-button">Add</button>
+                            <button class="add-cancel-buttons" id="cancel-button">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="project-list">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="tab-title"></div>
+            <div id="content">
+
+            </div>
+        </div>
+    </main>
+    <footer>Made by Jiahao Huamani</footer>
 </body>
 </html>
