@@ -89,6 +89,9 @@ main{
 .project-container {
     display: flex;
     align-items: center;
+    height: 30px;
+    background-color: var(--shade-white);
+    border-radius: var(--border-radius);
 }
 
 .default-tabs:hover,
@@ -96,6 +99,32 @@ main{
     filter: brightness(90%);
     font-weight: 600;
     cursor: pointer;
+}
+
+.project:hover,
+.delete-project-button:hover {
+    cursor: pointer;
+}
+
+.project {
+    flex: 1;
+    background-color: var(--shade-white);
+    font-size: 1.25rem;
+    border: none;
+    text-align: start;
+    height: 100%;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    color: inherit;
+}
+
+.delete-project-button {
+    background-color: var(--shade-white);
+    border: none;
+    height: 100%;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    color: inherit;
 }
 
 
@@ -151,6 +180,124 @@ h1 {
     filter: brightness(90%);
     cursor: pointer;
 }
+
+
+/* MAIN CONTENT */
+
+#main-content {
+    padding: var(--spacing-lg);
+    color: var(--black);
+}
+
+#tab-title {
+    font-size: 2rem;
+}
+
+#add-task-button {
+    border: none;
+    color: white;
+    background-color: var(--red);
+    font-size: 1.25rem;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+}
+
+#add-task-button:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}
+
+
+/* FORM */
+
+#add-tasks-inputs-container {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    border: 2px solid var(--black);
+    border-radius: var(--border-radius);
+    gap: 10px;
+ }
+
+label {
+    font-size: 1.25rem;
+}
+
+ #task-title,
+ #task-description,
+ #task-date{
+    font-size: 1.25rem;
+    border: 2px solid var(--black);
+ }
+
+ #priority-title {
+    font-size: 1.25rem;
+ }
+
+ textarea {
+    resize: none;
+ }
+
+#priority-button-container{
+    display: flex;
+    gap: 20px;
+}
+
+#low-priority-btn,
+#med-priority-btn,
+#high-priority-btn {
+    font-family: inherit;
+    font-size: 1.25rem;
+    border: 1px solid var(--red);
+    color: var(--black);
+    border-radius: 4px;
+    background-color: var(--white);
+}
+
+#low-priority-btn:hover,
+#med-priority-btn:hover,
+#high-priority-btn:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--white);
+}
+
+#low-priority-btn.selectedPrio,
+#med-priority-btn.selectedPrio,
+#high-priority-btn.selectedPrio {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+#add-cancel-task-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+}
+
+#add-task-confirm-button,
+#cancel-task-confirm-button {
+    font-family: inherit;
+    font-size: 1.25rem;
+    border: none;
+    color: var(--white);
+    border-radius: 4px;
+}
+
+#add-task-confirm-button:hover,
+#cancel-task-confirm-button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
+#add-task-confirm-button {
+    background-color: #BE0303;
+}
+
+#cancel-task-confirm-button {
+    background-color: #2ABD67;
+}
+
 
 
 
