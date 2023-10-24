@@ -169,11 +169,11 @@ h1 {
 }
 
 #add-button {
-    background-color: #BE0303;
+    background-color: #2ABD67;
 }
 
 #cancel-button {
-    background-color: #2ABD67;
+    background-color: #BE0303;
 }
 
 .add-cancel-buttons:hover {
@@ -292,11 +292,11 @@ label {
 }
 
 #add-task-confirm-button {
-    background-color: #BE0303;
+    background-color: #2ABD67;
 }
 
 #cancel-task-confirm-button {
-    background-color: #2ABD67;
+    background-color: #BE0303;
 }
 
 
