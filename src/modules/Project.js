@@ -1,6 +1,7 @@
 import UserInterface from "./UI";
-import { projects } from "./Storage";
+import { projects, storedProjects, storedTasks, tasks } from "./Storage";
 import { MakeNewTask, LoadTask } from "./Task";
+import AllTask from "./AllTask";
 
 class Project {
     static addProjectUi() {
@@ -24,8 +25,11 @@ class Project {
             const input = document.querySelector('#add-project-input')
             if (projects.includes(input.value)){
                 alert(`${input.value} already exist`)
+            } else if (input.value.trim() == ''){
+                alert('enter a value please')
             } else {
                 projects.push(input.value);
+                localStorage.setItem('projects', JSON.stringify(projects));
                 Project.generateProjects()
                 input.value =''
                 projectInput.style.display = 'none'
@@ -38,6 +42,8 @@ class Project {
     static cancelBtn(addProjectBtn, projectInput) {
         const cancelBtn = document.querySelector('#cancel-button')
         cancelBtn.addEventListener('click',()=> {
+            const input = document.querySelector('#add-project-input')
+            input.value =''
             projectInput.style.display = 'none'
             addProjectBtn.style.display = 'block'
         })
@@ -58,6 +64,7 @@ class Project {
             
             deleteProjectBtn.addEventListener('click', ()=>{
                 Project.deleteProject(project)
+                AllTask.loadAllTask()
             })
 
             projectSingle.addEventListener('click', ()=>{
@@ -74,6 +81,15 @@ class Project {
     static deleteProject(project) {
         const index = projects.indexOf(project)
         projects.splice(index, 1)
+
+        tasks.forEach((task)=> {
+            if(task.project == project){
+                const taskIndex = tasks.indexOf(task)
+                tasks.splice(taskIndex, 1)
+            }
+        })
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+        localStorage.setItem('projects', JSON.stringify(projects))
         Project.generateProjects()
     }
 

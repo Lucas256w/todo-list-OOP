@@ -9,6 +9,9 @@ class UserInterface {
         allTask.addEventListener('click', ()=>{
             AllTask.loadAllTask()
         })
+
+        AllTask.loadAllTask()
+        Project.generateProjects()
     }
     
 }
