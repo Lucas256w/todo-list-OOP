@@ -20,7 +20,7 @@ class MakeNewTask {
         <div id="add-tasks-inputs-container" style="display: flex;">
             <label for="task-title">Title: </label>
             <input type="text" id="task-title" maxlength="40">
-            <label for="task-description">Description: </label>
+            <label for="task-description">Description(Optional): </label>
             <textarea id="task-description" maxlength="200"></textarea>
             <label for="task-date">Date: </label>
             <input type="date" id="task-date" max="9999-12-31">
@@ -76,14 +76,12 @@ class MakeNewTask {
         })
 
         addTaskbtn.addEventListener('click', ()=>{
-            if (taskTitle.value.trim() != '' && taskDescription.value.trim() != '' && taskDate.value != '' && selectedPrio != ''){
+            if (taskTitle.value.trim() != '' && taskDate.value != '' && selectedPrio != ''){
                 const task = new Task(taskTitle.value, taskDescription.value, taskDate.value, selectedPrio, project, false)
                 tasks.push(task)
                 localStorage.setItem('tasks', JSON.stringify(tasks));
-                console.log(tasks)
                 Project.viewProjectPage(project)
             } else {
-                console.log(taskTitle.value.trim(), taskDescription.value.trim(), taskDate.value, selectedPrio)
                 alert('Please fill all information')
             }
         })
@@ -184,15 +182,16 @@ class LoadTask {
 class EditTask {
 
     static editTask(project, task, today) {
+        console.log(task.title)
         const content = document.querySelector('#content')
         content.innerHTML = `
         <div id="add-tasks-inputs-container" style="display: flex;">
             <label for="task-title">Title: </label>
-            <input type="text" id="task-title" value=${task.title} maxlength="40">
-            <label for="task-description">Description: </label>
+            <input type="text" id="task-title" value="${task.title}" maxlength="40">
+            <label for="task-description">Description(Optional): </label>
             <textarea id="task-description" maxlength="200">${task.description}</textarea>
             <label for="task-date">Date: </label>
-            <input type="date" id="task-date" value=${task.dueDate} max="9999-12-31">
+            <input type="date" id="task-date" value="${task.dueDate}" max="9999-12-31">
             <div id="priority-title">Priority: </div>
             <div id="priority-button-container">
                 <button id="low-priority-btn">Low</button>
